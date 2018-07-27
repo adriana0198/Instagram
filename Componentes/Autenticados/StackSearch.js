@@ -1,23 +1,26 @@
 import { StackNavigator } from 'react-navigation';
-import Home from './Home';
-import Autor from './Profile';
 import Publicacion from './Publicacion';
+import Search from './Search';
+import Autor from './Profile';
 import Comentarios from './Comentarios';
 
-const StackHome = StackNavigator({
-    Home:{
-        screen: Home,
-    },
-    Autor:{
-        screen: Autor,
+
+const StackSearch = StackNavigator({
+    Search:{
+        screen: Search,
     },
     Publicacion:{
         screen: Publicacion,
     },
+    Autor:{
+        screen: Autor,
+    },
+    
     Comentarios:{
         screen: Comentarios,
-        
+    
+     
     },
 });
 
-export { StackHome };
+export { StackSearch };

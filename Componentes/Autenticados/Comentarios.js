@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
 class Comentarios extends Component {
+  static navigationOptions = {
+    tabBarVisible: false,
+};
   render() {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        <Text> Comentarios </Text>
+        <Text>Comentarios</Text>
         <Button
           title="Autor"
           onPress={() => {

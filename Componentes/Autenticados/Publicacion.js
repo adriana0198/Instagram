@@ -6,7 +6,13 @@ class Publicacion extends Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        <Text> Publicacion </Text>
+        <Text>Publicacion</Text>
+        <Button
+          title="Autor"
+          onPress={() => {
+            navigation.navigate('Autor'); 
+          }}
+        />
         <Button
           title="Comentarios"
           onPress={() => {

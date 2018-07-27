@@ -6,7 +6,7 @@ class Home extends Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        <Text> Home </Text>
+        <Text>Home</Text>
         <Button
           title="Autor"
           onPress={() => {

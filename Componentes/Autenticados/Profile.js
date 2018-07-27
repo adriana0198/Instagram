@@ -6,9 +6,9 @@ class Profile extends Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        <Text> Profile </Text>
+        <Text>Profile</Text>
         <Button
-          title="Publicacion"
+          title="Publicación"
           onPress={() => {
             navigation.navigate('Publicacion'); 
           }}
