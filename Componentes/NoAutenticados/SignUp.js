@@ -7,14 +7,8 @@ class SignUp extends Component {
     render() {
         const { navigation } = this.props;
         return(
-            <View style={styles.container}>
-                <Text>SignUp</Text>
+            <View style={styles.container}>              
                 <SignUpForm/>
-                <TextInput placeholder="correo@correo.com"/>
-                
-                <Button title="Aumentar"
-                onPress={this.props.aumentar}/>
-
                 <Button title="SignIn"
                 onPress={()=> {
                     navigation.goBack(); 
@@ -29,8 +23,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#90EE90',
+        paddingHorizontal: 16,
     },
 });
 

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
-import { autenticacion } from '../../../Store/Servicios/Firebase';
 
 const fieldNombre = (props) => {
-    console.log('inputs');
+    console.log(props);
     return (
-        <View style={StyleSheet.TextInput}>
+        <View style={styles.TextInput}>
             <TextInput 
             placeholder={props.ph}
             onChangeText={props.input.onChange}
@@ -16,21 +15,14 @@ const fieldNombre = (props) => {
             secureTextEntry={!!(props.input.name === 'password' || props.input.name === 'confirmacion') }
             onBlur={props.input.onBlur}
             />
-            <View style={styles.linea}/>
+            <View style={StyleSheet.linea}/>
             {props.meta.touched && props.meta.error && <Text style={styles.errors}>{props.meta.error}</Text>}
         </View>
     );
 };
 
 const validate = (values) => {
-    const errors = {};
-    if(!values.nombre){
-        errors.nombre = 'requerido';
-    }else if (values.nombre.length < 5 ){
-        errors.nombre = 'deben ser al menos 5 caracteres';
-    }else if (values.nombre.length < 10 ){
-        errors.nombre = 'debe ser menor de 10 caracteres';
-    } 
+    const errors = {}; 
 
     if(!values.correo){
         errors.correo = 'requerido';
@@ -46,41 +38,21 @@ const validate = (values) => {
         errors.password = 'debe ser menor de 15 caracteres';
     }
 
-    if(!values.confirmacion){
-        errors.confirmacion = 'requerido';
-    }else if (values.password !== values.confirmacion){
-        errors.confirmacion = 'el password debe coincidir';
-    }
-
     return errors; 
 }
 
 
-const SignUpForm = (props) => {
-    console.log ('signupform');
+const SignInForm = (props) => {
+    console.log (props);
     return(
         <View>
-            <Field name="nombre" component={fieldNombre} ph='nombre'  />
+            
             <Field name="correo" component={fieldNombre} ph='correo@correo.com' />
-            <Field name="password" component={fieldNombre} ph='******'  />
-            <Field name="confirmacion" component={fieldNombre} ph='******'  />
+            <Field name="password" component={fieldNombre} ph='******'  /> 
             <Button 
-                title="Registrar"
+                title="SingIn"
                 onPress={props.handleSubmit((values) => {
                     console.log(values); 
-                    autenticacion
-                    .createUserWithEmailAndPassword(values.correo, values.password)
-                    .then((success) => {
-                        console.log(success);
-                    })
-                    .catch(function(error) {
-                    // Handle Errors here.
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(errorCode);
-                    console.log(errorMessage);
-                    // ...
-                    });
                 })}
             />
         </View>
@@ -98,10 +70,10 @@ const styles = StyleSheet.create({
     errors:{
         color:'#FF0000',
     },
-});    
+}); 
 
 
 export default reduxForm({
-    form: 'SignUpForm',
+    form: 'SignInForm',
     validate,
-})(SignUpForm);
+})(SignInForm);
