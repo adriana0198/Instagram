@@ -17,7 +17,8 @@ const fieldNombre = (props) => {
             onBlur={props.input.onBlur}
             />
             <View style={styles.linea}/>
-            {props.meta.touched && props.meta.error && <Text style={styles.errors}>{props.meta.error}</Text>}
+            {props.meta.touched && props.meta.error &&
+             <Text style={styles.errors}>{props.meta.error}</Text>}
         </View>
     );
 };
@@ -66,22 +67,22 @@ const SignUpForm = (props) => {
             <Field name="confirmacion" component={fieldNombre} ph='******'  />
             <Button 
                 title="Registrar"
-                onPress={props.handleSubmit((values) => {
-                    console.log(values); 
-                    autenticacion
-                    .createUserWithEmailAndPassword(values.correo, values.password)
-                    .then((success) => {
-                        console.log(success);
-                    })
-                    .catch(function(error) {
+                onPress={props.handleSubmit(props.registro,
+                  //  */ ((values) => {
+                  //  console.log(values); 
+                 //   autenticacion
+                  //  .createUserWithEmailAndPassword(values.correo, values.password)
+                  //  .then((success) => 
+                   //     console.log(success);
+                  //  
+                  //  .catch((error) => 
                     // Handle Errors here.
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(errorCode);
-                    console.log(errorMessage);
-                    // ...
-                    });
-                })}
+                   // const errorCode = error.code;
+                  //  const errorMessage = error.message;
+                   // console.log(errorCode);
+                    //console.log(errorMessage);
+                   
+                )}  
             />
         </View>
     );

@@ -4,12 +4,18 @@ import { connect } from 'react-redux';
 import SignUpForm from './Formas/SignUpForm';
  
 class SignUp extends Component {
-    render() {
+    regisroDeUsuario = (values) => {
+        console.log(values);
+        this.props.registro(values);
+    };
+    render () {
+     console.log(this.props.numero);
         const { navigation } = this.props;
         return(
             <View style={styles.container}>              
-                <SignUpForm/>
-                <Button title="SignIn"
+                <SignUpForm registro={this.regisroDeUsuario} />
+                <Button
+                title="SignIn"
                 onPress={()=> {
                     navigation.goBack(); 
                 } }
@@ -29,13 +35,13 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-       numero: state.reducerPrueba
+       numero: state.reducerPrueba,
     });
 
 
 const mapDispatchToProps = (dispatch) => ({
-         aumentar: () =>{
-           dispatch({type: 'AUMENTAR_REDUCER_PRUEBA'});
+         registro: (values) => {
+           dispatch({type: 'REGISTRO', datos: values});
        },
     });
 
