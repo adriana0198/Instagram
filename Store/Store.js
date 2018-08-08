@@ -12,7 +12,7 @@ const reducerPrueba =  (state=[0], action) =>{
     }
 };
 
-const sagaMiddleware = createSagaMiddleware();
+const SagaMiddleware = createSagaMiddleware();
 
 
 const reducers = combineReducers({
@@ -20,8 +20,8 @@ const reducers = combineReducers({
      form,  
 });
 
-const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+const store = createStore(reducers, applyMiddleware(SagaMiddleware));
 
-sagaMiddleware.run(functionPrimaria);
+SagaMiddleware.run(functionPrimaria);
 
 export default store;
